@@ -19,7 +19,7 @@ namespace DesafioFundamentos.Models
         {
             // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
             string placa;
-            
+
             Console.WriteLine("Digite a placa do veículo para estacionar:");
             placa = Console.ReadLine();
             if (ValidarPlaca(placa))
@@ -82,13 +82,19 @@ namespace DesafioFundamentos.Models
             }
         }
 
-        private bool ValidarPlaca(string placa)
+        private static bool ValidarPlaca(string placa)
         {
             // a nova placa Mercosul conta com 3 letras, 1 número, mais 1 letra e 2 números: AAAXAXX
-            string padraoPlaca = "^[^0-9a-z]{3}[^A-Za-z]{1}[^0-9a-z]{1}[^A-Za-z]{2}";
+            string padraoPlacaNova = "^[^0-9a-z]{3}[^A-Za-z]{1}[^0-9a-z]{1}[^A-Za-z]{2}";
+            string padraoPlacaAntiga = "^[^0-9a-z]{3}\\-[^A-Za-z]{4}";
+
             bool placaValida = false;
 
-            if (Regex.IsMatch(placa, padraoPlaca))
+            if (Regex.IsMatch(placa, padraoPlacaNova))
+            {
+                placaValida = true;
+            }
+            else if (Regex.IsMatch(placa, padraoPlacaAntiga))
             {
                 placaValida = true;
             }
