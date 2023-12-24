@@ -17,11 +17,12 @@ namespace DesafioFundamentos.Models
 
         public void AdicionarVeiculo()
         {
-            string placa;
             // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
+            string placa;
+            
             Console.WriteLine("Digite a placa do veículo para estacionar:");
             placa = Console.ReadLine();
-            if(ValidarPlaca(placa))
+            if (ValidarPlaca(placa))
             {
                 veiculos.Add(placa);
             }
@@ -47,10 +48,10 @@ namespace DesafioFundamentos.Models
                 // TODO: Pedir para o usuário digitar a quantidade de horas que o veículo permaneceu estacionado,
                 // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
                 int horas = 0;
-                decimal valorTotal = 0; 
+                decimal valorTotal = 0;
 
                 horas = Convert.ToInt32(Console.ReadLine());
-                valorTotal = precoInicial+precoPorHora*horas;
+                valorTotal = precoInicial + precoPorHora * horas;
 
                 // TODO: Remover a placa digitada da lista de veículos
                 veiculos.Remove(placa);
@@ -70,7 +71,7 @@ namespace DesafioFundamentos.Models
             {
                 Console.WriteLine("Os veículos estacionados são:");
                 // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
-                foreach(string placa in veiculos)
+                foreach (string placa in veiculos)
                 {
                     Console.WriteLine(placa);
                 }
@@ -87,7 +88,7 @@ namespace DesafioFundamentos.Models
             string padraoPlaca = "^[^0-9a-z]{3}[^A-Za-z]{1}[^0-9a-z]{1}[^A-Za-z]{2}";
             bool placaValida = false;
 
-            if(Regex.IsMatch(placa, padraoPlaca))
+            if (Regex.IsMatch(placa, padraoPlaca))
             {
                 placaValida = true;
             }
