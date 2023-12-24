@@ -1,3 +1,6 @@
+using System.Collections.Concurrent;
+using System.Text.RegularExpressions;
+
 namespace DesafioFundamentos.Models
 {
     public class Estacionamento
@@ -14,9 +17,12 @@ namespace DesafioFundamentos.Models
 
         public void AdicionarVeiculo()
         {
+            string placa;
             // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
             Console.WriteLine("Digite a placa do veículo para estacionar:");
-            veiculos.Add(Console.ReadLine());
+            placa = Console.ReadLine();
+            ValidarPlaca(placa);
+            veiculos.Add(placa);
         }
 
         public void RemoverVeiculo()
@@ -67,6 +73,20 @@ namespace DesafioFundamentos.Models
             {
                 Console.WriteLine("Não há veículos estacionados.");
             }
+        }
+
+        private bool ValidarPlaca(string placa)
+        {
+            // a nova placa Mercosul conta com 3 letras, 1 número, mais 1 letra e 2 números: AAAXAXX
+            string padraoPlaca = "^[^0-9]{3}[^A-Za-z]{1}[^0-9]{1}[^A-Za-z]{2}";
+            bool placaValida = false;
+
+            if(Regex.IsMatch(placa, padraoPlaca))
+            {
+                placaValida = true;
+            }
+
+            return placaValida;
         }
     }
 }
