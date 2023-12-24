@@ -27,6 +27,7 @@ while (exibirMenu)
     Console.WriteLine("2 - Remover veículo");
     Console.WriteLine("3 - Listar veículos");
     Console.WriteLine("4 - Encerrar");
+    Console.WriteLine($"Quantidade de Veículos Estacionados: {es.QuantidadVeiculos()}");
 
     switch (Console.ReadLine())
     {
