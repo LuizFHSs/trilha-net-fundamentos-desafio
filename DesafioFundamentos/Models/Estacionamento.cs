@@ -28,7 +28,8 @@ namespace DesafioFundamentos.Models
             }
             else
             {
-                Console.WriteLine("Placa Inválida.");
+                Console.WriteLine("\n***Placa Inválida***" + "\n" + $"{placa} Não Corresponde ao Padrão Mercosul.\n");
+                AdicionarVeiculo();
             }
         }
 
@@ -100,11 +101,6 @@ namespace DesafioFundamentos.Models
             }
 
             return placaValida;
-        }
-
-        public int QuantidadVeiculos()
-        {
-            return veiculos.Count;
         }
     }
 }
